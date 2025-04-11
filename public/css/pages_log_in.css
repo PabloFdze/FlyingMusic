@@ -1,0 +1,141 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor de inicio de sesión */
+.login-container {
+    background-color: #1c1c1c;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 1rem;
+    width: 50px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para el inicio de sesión social */
+.social-login .btn {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.btn.google {
+    background-color: #DB4437;
+    color: #fff;
+}
+
+.btn.facebook {
+    background-color: #3b5998;
+    color: #fff;
+}
+
+.btn.apple {
+    background-color: #A3AAAE;
+    color: #fff;
+}
+
+/* Estilos para el formulario de inicio de sesión */
+form {
+    margin-top: 1rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #b3b3b3;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.input-group .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 7px);
+    cursor: pointer;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.remember-me input {
+    margin-right: 0.5rem;
+}
+
+.btn.login {
+    background-color: #fffb00b9;
+    color: #fff;
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn.login:hover {
+    background-color: #6f00ff;
+}
+
+.forgot-password,
+.signup-link {
+    color: #0059ff;
+    text-align: center;
+    margin-top: 1rem;
+    text-decoration: none;
+}
+
+.signup-link a {
+    color: #11d0d6;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

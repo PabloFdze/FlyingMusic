@@ -16,8 +16,8 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="registrarme.html"><button class="primary-btn-header">Registrarse</button></a></li>
-                    <li><a href="iniciasesion.html"><button class="primary-btn-header">Iniciar sesión</button></a></li>
+                    <li><a href="{{route('flyingmusic.sign_in')}}"><button class="primary-btn-header">Registrarse</button></a></li>
+                    <li><a href="{{route('flyingmusic.log_in')}}"><button class="primary-btn-header">Iniciar sesión</button></a></li>
                 </ul>
             </nav>
         </div>
@@ -30,11 +30,11 @@
                 <p>Prueba Premium Individual gratis durante 1 mes.</p>
                 <p>Después, solo 10,99 €/mes. Cancelas cuando quieras.</p>
                 <div class="buttons">
-                    <form action="iniciasesion.html">
+                    <form action="{{route('flyingmusic.log_in')}}">
                         <button class="primary-btn">Probar gratis durante 1 mes</button>
                     </form>
                 </div>
-                <p class="disclaimer"> <a href="pdf/Condiciones FLyingMusic.pdf">Consulta las condiciones.</a></p>
+                <p class="disclaimer"> <a href="{{asset('pdf/Condiciones FlyingMusic.pdf')}}">Consulta las condiciones.</a></p>
             </div>
             <div class="hero-images">
                 <img src="img/" alt="">
@@ -55,7 +55,7 @@
                                 <li>Sin límite de saltos</li><br>
                                 <li>Toda la música a tu disposición</li><br>
                             </ul>
-                            <form action="iniciasesion.html">
+                            <form action="{{route('flyingmusic.log_in')}}">
                             <button class="primary-btn">Registrate</button>
                             </form>
                         </div>
@@ -71,10 +71,10 @@
                             <li>1 cuenta Premium</li><br>
                             <li>Cancela cuando quieras</li><br>
                         </ul>
-                        <form action="iniciasesion.html">
+                        <form action="{{route('flyingmusic.log_in')}}">
                             <button class="primary-btn">Probar gratis durante 1 mes</button>
                         </form>
-                        <p class="disclaimer"><a href="pdf/Condiciones FLyingMusic.pdf">Consulta las condiciones.</a></p>
+                        <p class="disclaimer"><a href="{{asset('pdf/Condiciones FlyingMusic.pdf')}}">Consulta las condiciones.</a></p>
                     </div>
                 </div>
             </div>
@@ -89,10 +89,10 @@
                             <li>Descuento para estudiantes que cumplan los requisitos</li><br>
                             <li>Cancela cuando quieras</li><br>
                         </ul>
-                        <form action="iniciasesion.html">
+                        <form action="{{route('flyingmusic.log_in')}}">
                             <button class="secondary-btn">Probar gratis durante 1 mes</button>
                         </form>
-                        <p class="disclaimer"> <a href="pdf/Condiciones FLyingMusic.pdf">Consulta las condiciones.</a></p>
+                        <p class="disclaimer"> <a href="{{asset('pdf/Condiciones FlyingMusic.pdf')}}">Consulta las condiciones.</a></p>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                             <li>Controla el contenido etiquetado como explícito</li><br>
                             <li>Cancela cuando quieras</li><br>
                         </ul>
-                        <form action="iniciasesion.html"><button class="secondary-btn">Conseguir Premium Familiar</button></form>
+                        <form action="{{route('flyingmusic.log_in')}}"><button class="secondary-btn">Conseguir Premium Familiar</button></form>
                     </div>
                 </div>
             </div>

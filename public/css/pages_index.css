@@ -47,9 +47,9 @@ header {
 
 /*Logo*/
 .logo-title-container{
-    width: 60px;
-    height: auto;
-    border-radius: 10px;
+    display: block;
+    margin: 0 auto 1rem;
+    width: 50px;
 }
 
 
