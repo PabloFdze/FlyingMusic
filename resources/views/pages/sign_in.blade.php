@@ -15,27 +15,26 @@
             </div>
         <h1>FlyingMusic</h1>
         <h1>Regístrate para empezar a escuchar contenido</h1>
-        <form action="#">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
             <div class="input-group">
-                <label for="username">Nombre de usuario</label>
-                <input type="text" id="username" placeholder="Nombre de usuario" required>
+                <label for="name">Nombre de usuario</label>
+                <input type="text" name="name" id="name" placeholder="Nombre de usuario" required>
             </div>
             <div class="input-group">
-                <label for="useremail">Correo electrónico o nombre de usuario</label>
-                <input type="text" id="useremail" placeholder="nombre@dominio.com" required>
+                <label for="email">Correo electrónico</label>
+                <input type="email" name="email" id="email" placeholder="nombre@dominio.com" required>
             </div>
             <div class="input-group">
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="Contraseña" required>
-                <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                <input type="password" name="password" id="password" placeholder="Contraseña" required>
             </div>
-            <div class="remember-me">
-                <input type="checkbox" id="remember">
-                <label for="remember">Recuérdame</label>
+            <div class="input-group">
+                <label for="password_confirmation">Confirmar Contraseña</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repite la contraseña" required>
             </div>
-            <form action="{{route('flyingmusic.music')}}">
-                <button type="submit" class="submit-button">Registrarme</button>
-            </form>
+            <button type="submit" class="submit-button">Registrarme</button>
+        </form>
         </form>
         <div class="social-buttons">
             <a href="https://accounts.google.com" class="google">Registrarte con Google</a>
