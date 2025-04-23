@@ -7,11 +7,12 @@ use App\Http\Controllers\PagesController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [PagesController::class, 'index'])->name('flyingmusic.index');
 Route::get('/sign_in', [PagesController::class, 'sign_in'])->name('flyingmusic.sign_in');
-Route::get('/log_in', [PagesController::class, 'log_in'])->name('flyingmusic.log_in');
-Route::get('/music', [PagesController::class, 'music'])->name('flyingmusic.music');
+//Route::get('/log_in', [PagesController::class, 'log_in'])->name('flyingmusic.log_in');
+Route::get('/music', [MusicController::class, 'index'])->name('flyingmusic.music');
 Route::get('/music/upload', [MusicController::class, 'create'])->name('flyingmusic.upload');
 Route::post('/music', [MusicController::class, 'store'])->name('flyingmusic.store');
 Route::get('/dashboard', function () {
@@ -25,8 +26,24 @@ Route::get('/register', [RegisteredUserController::class, 'create'])->name('regi
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
 // Login
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
-Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+//Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::get('/login', function () {
+    return view('pages.login');
+})->name('flyingmusic.login');
+
+Route::post('/login', function (Request $request) {
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/dashboard');
+    }
+
+    return back()->withErrors([
+        'email' => 'Credenciales incorrectas.',
+    ]);
+});
+//Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 // Logout
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

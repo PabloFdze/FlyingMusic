@@ -18,7 +18,7 @@ class PagesController extends Controller
     }
 
     public function log_in(){
-        return view('pages.log_in');
+        return view('pages.login');
     }
 
     public function store(Request $request)
@@ -29,15 +29,13 @@ class PagesController extends Controller
             'password' => 'required|string|min:8|max:50',
         ]);
 
-        $path = $request->file('file')->store('public/music');
-
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
 
-        return redirect()->back()->with('success', 'Usuario registrado con éxito.');
+        return redirect()->back()->with('success', 'Usuario registrado con éxito.')->route('music.index');
     }
     
 

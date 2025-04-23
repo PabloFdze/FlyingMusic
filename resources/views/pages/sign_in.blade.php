@@ -42,7 +42,7 @@
             <a href="https://www.apple.com" class="apple">Registrarte con Apple</a>
         </div>
         <div class="footer">
-            ¿Ya tienes una cuenta? <a href="{{route('flyingmusic.log_in')}}">Inicia sesión aquí.</a>
+            ¿Ya tienes una cuenta? <a href="{{route('flyingmusic.login')}}">Inicia sesión aquí.</a>
         </div>
     </div>
 </body>
