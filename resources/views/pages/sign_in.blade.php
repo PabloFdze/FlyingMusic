@@ -15,7 +15,7 @@
             </div>
         <h1>FlyingMusic</h1>
         <h1>Regístrate para empezar a escuchar contenido</h1>
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('flyingmusic.music') }}">
             @csrf
             <div class="input-group">
                 <label for="name">Nombre de usuario</label>
