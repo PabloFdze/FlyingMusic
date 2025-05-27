@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>FlyingMusic</title>
+    <link rel="stylesheet" href="{{ asset('css/pages_music.css') }}">
+   
 </head>
 <h1>Subir canción</h1>
 
@@ -9,7 +11,7 @@
         <p style="color: lightgreen; padding-left: 20px">{{ session('success') }}</p>
     @endif
 
-    <form method="POST" action="{{ route('music.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('flyingmusic.store') }}" enctype="multipart/form-data">
         @csrf
         <input type="text" name="title" placeholder="Título" required><br>
         <input type="text" name="artist" placeholder="Artista"><br>
@@ -19,19 +21,19 @@
 
     <h2>Canciones</h2>
     <div class="song-list">
-        @foreach ($songs as $song)
-            <div class="song-block">
-                <div class="song-info">
-                    <span class="song-title">{{ $song->title }}</span>
-                    <span class="song-artist">{{ $song->artist }}</span>
-                </div>
-                <audio controls>
-                    <source src="{{ asset($song->file_path) }}" type="audio/mpeg">
-                    Tu navegador no soporta audio HTML5.
-                </audio>
+    @foreach ($songs as $song)
+        <div class="song-card">
+            <div class="song-info">
+                <h3>{{ $song->title }}</h3>
+                <p>{{ $song->artist }}</p>
             </div>
-        @endforeach
-    </div>
+            <audio controls class="audio-player">
+                <source src="{{ asset($song->file_path) }}" type="audio/mpeg">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+        </div>
+    @endforeach
+</div>
 
     <!-- Opcional: Player fijo abajo (última canción reproducida o en cola futura) -->
     {{-- <div class="music-player">
