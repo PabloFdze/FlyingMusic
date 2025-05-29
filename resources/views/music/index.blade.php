@@ -5,7 +5,16 @@
     <link rel="stylesheet" href="{{ asset('css/pages_music.css') }}">
    
 </head>
-<h1>Subir canción</h1>
+<body>
+@extends('layouts/logout')
+
+    <form action="{{route('flyingmusic.index')}}">
+                <button class="logo">
+                <img src="{{asset('img/flying.jpg')}}" alt="Logo de FlyingMusic" class="logo"></img>
+                </button>
+            </form>
+
+    <h1>Subir canción</h1>
 
     @if(session('success'))
         <p style="color: lightgreen; padding-left: 20px">{{ session('success') }}</p>
@@ -16,7 +25,7 @@
         <input type="text" name="title" placeholder="Título" required><br>
         <input type="text" name="artist" placeholder="Artista"><br>
         <input type="file" name="file" accept=".mp3,.wav" required><br>
-        <button type="submit">Subir</button>
+        <button type="submit" class="post_song">Subir</button>
     </form>
 
     <h2>Canciones</h2>

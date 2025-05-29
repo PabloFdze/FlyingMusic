@@ -15,7 +15,7 @@
             </div>
         <h1>FlyingMusic</h1>
         <h1>Regístrate para empezar a escuchar contenido</h1>
-        <form method="POST" action="{{ route('flyingmusic.music') }}">
+        <form method="POST" action="{{ route('flyingmusic.register') }}">
             @csrf
             <div class="input-group">
                 <label for="name">Nombre de usuario</label>
@@ -33,7 +33,9 @@
                 <label for="password_confirmation">Confirmar Contraseña</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repite la contraseña" required>
             </div>
+            <form action="{{route('flyingmusic.music')}}">
             <button type="submit" class="submit-button">Registrarme</button>
+            </form>
         </form>
         </form>
         <div class="social-buttons">

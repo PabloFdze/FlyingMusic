@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [PagesController::class, 'index'])->name('flyingmusic.index');
 Route::get('/sign_in', [PagesController::class, 'sign_in'])->name('flyingmusic.sign_in');
+Route::post('/register', [PagesController::class, 'register'])->name('flyingmusic.register');
 Route::get('/log_in', [PagesController::class, 'log_in'])->name('flyingmusic.login');
+Route::post('/log', [AuthenticatedSessionController::class, 'log'])->name('flyingmusic.log');
 Route::get('/music', [MusicController::class, 'index'])->name('flyingmusic.music');
 Route::get('/music/upload', [MusicController::class, 'create'])->name('flyingmusic.upload');
 Route::post('/music', [MusicController::class, 'store'])->name('flyingmusic.store');

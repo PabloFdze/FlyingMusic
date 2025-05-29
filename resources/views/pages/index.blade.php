@@ -55,7 +55,7 @@
                                 <li>Sin límite de saltos</li><br>
                                 <li>Toda la música a tu disposición</li><br>
                             </ul>
-                            <form action="{{route('flyingmusic.login')}}">
+                            <form action="{{route('flyingmusic.sign_in')}}">
                             <button class="primary-btn">Registrate</button>
                             </form>
                         </div>

@@ -49,7 +49,7 @@
         border-radius: 10px;
     }
 
-    input, button {
+    input, .post_song {
         display: block;
         width: 100%;
         margin-bottom: 1rem;
@@ -63,7 +63,7 @@
         color: white;
     }
 
-    button {
+    .post_song {
         background-color: #ff02b3;
         color: white;
         font-weight: bold;
@@ -71,8 +71,18 @@
         transition: background 0.3s;
     }
 
-    button:hover {
+    .post_song:hover {
         background-color: #e257cb;
+    }
+
+    .logo {
+        display: block;
+        margin: 0 auto 1rem;
+        width: 50px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
     }
 
     @media (max-width: 600px) {
