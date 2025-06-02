@@ -14,20 +14,6 @@
                 </button>
             </form>
 
-    <h1>Subir canción</h1>
-
-    @if(session('success'))
-        <p style="color: lightgreen; padding-left: 20px">{{ session('success') }}</p>
-    @endif
-
-    <form method="POST" action="{{ route('flyingmusic.store') }}" enctype="multipart/form-data">
-        @csrf
-        <input type="text" name="title" placeholder="Título" required><br>
-        <input type="text" name="artist" placeholder="Artista"><br>
-        <input type="file" name="file" accept=".mp3,.wav" required><br>
-        <button type="submit" class="post_song">Subir</button>
-    </form>
-
     <h2>Canciones</h2>
     <div class="song-list">
     @foreach ($songs as $song)

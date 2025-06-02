@@ -32,6 +32,8 @@ Route::get('/premium/access', [SubscriptionController::class, 'form'])->name('pr
 
 Route::post('/premium/access', [SubscriptionController::class, 'makePremium'])->name('premium.upgrade');
 
+Route::delete('/music/{title}', [SubscriptionController::class, 'destroy'])->name('music.destroy');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified']);
