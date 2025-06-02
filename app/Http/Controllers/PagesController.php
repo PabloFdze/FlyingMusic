@@ -16,6 +16,7 @@ class PagesController extends Controller
     //Vista página para registro de usuario
     public function sign_in()
     {
+    
         return view('pages.sign_in');
     }
     //Registro de usuario
