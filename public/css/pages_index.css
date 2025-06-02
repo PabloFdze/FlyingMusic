@@ -85,6 +85,7 @@ nav ul li a {
     justify-content: center;
     padding: 250px;
     background: linear-gradient(to right, #000, #555);
+    text-align: center;
 }
 
 /*Contenido del eslogan*/
@@ -93,6 +94,7 @@ nav ul li a {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s forwards;
+    text-align: center;
 }
 
 @keyframes fadeInUp {

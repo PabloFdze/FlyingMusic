@@ -30,7 +30,7 @@
                 <p>Prueba Premium Individual gratis durante 1 mes.</p>
                 <p>Después, solo 10,99 €/mes. Cancelas cuando quieras.</p>
                 <div class="buttons">
-                    <form action="{{route('flyingmusic.login')}}">
+                    <form action="{{route('premium.access')}}">
                         <button class="primary-btn">Probar gratis durante 1 mes</button>
                     </form>
                 </div>
@@ -55,7 +55,7 @@
                                 <li>Sin límite de saltos</li><br>
                                 <li>Toda la música a tu disposición</li><br>
                             </ul>
-                            <form action="{{route('flyingmusic.sign_in')}}">
+                            <form action="{{route('premium.access')}}">
                             <button class="primary-btn">Registrate</button>
                             </form>
                         </div>
@@ -71,7 +71,7 @@
                             <li>1 cuenta Premium</li><br>
                             <li>Cancela cuando quieras</li><br>
                         </ul>
-                        <form action="{{route('flyingmusic.login')}}">
+                        <form action="{{route('premium.access')}}">
                             <button class="primary-btn">Probar gratis durante 1 mes</button>
                         </form>
                         <p class="disclaimer"><a href="{{asset('pdf/Condiciones FlyingMusic.pdf')}}">Consulta las condiciones.</a></p>
@@ -89,7 +89,7 @@
                             <li>Descuento para estudiantes que cumplan los requisitos</li><br>
                             <li>Cancela cuando quieras</li><br>
                         </ul>
-                        <form action="{{route('flyingmusic.login')}}">
+                        <form action="{{route('premium.access')}}">
                             <button class="secondary-btn">Probar gratis durante 1 mes</button>
                         </form>
                         <p class="disclaimer"> <a href="{{asset('pdf/Condiciones FlyingMusic.pdf')}}">Consulta las condiciones.</a></p>
@@ -106,7 +106,7 @@
                             <li>Controla el contenido etiquetado como explícito</li><br>
                             <li>Cancela cuando quieras</li><br>
                         </ul>
-                        <form action="{{route('flyingmusic.login')}}"><button class="secondary-btn">Conseguir Premium Familiar</button></form>
+                        <form action="{{route('premium.access')}}"><button class="secondary-btn">Conseguir Premium Familiar</button></form>
                     </div>
                 </div>
             </div>
