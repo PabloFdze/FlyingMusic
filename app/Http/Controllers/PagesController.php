@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,14 +20,16 @@ class PagesController extends Controller
     public function sign_in()
     {
         if (Auth::user()) {
-        return redirect()->route('music.index');
+        return redirect()->route('flyingmusic.music')->with('success', 'Ya has iniciado sesión.');
     }
         return view('pages.sign_in');
     }
     //Registro de usuario
-    public function register(Request $request)
+    public function register(StoreUserRequest $request)
     {
-        $request->validate([
+        $user = User::create($request->validated());
+
+        /*$request->validate([
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|max:50',
@@ -37,7 +41,7 @@ class PagesController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
         $user->save();
-        Auth::login($user);
+        Auth::login($user);*/
 
         /*User::create([
             'name' => $request->input('name'),
@@ -45,28 +49,49 @@ class PagesController extends Controller
             'password' => Hash::make($request->password),
         ]);*/
 
-        return redirect()->route('music.index')->with('success', 'Usuario registrado correctamente');
+        return redirect()->route('flyingmusic.music')->with('success', 'Usuario registrado correctamente');
 
     }
 
     //Vista página para iniciar sesión
 
     public function log_in(){
+    if (Auth::check()) {
+        return redirect()->route('flyingmusic.music')->with('success', 'Ya has iniciado sesión.');
+    }
         return view('pages.login');
     }
 
     //Iniciar sesión
-     public function log(Request $request)
+     public function log(LoginRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string|min:8|max:50',
-        ]);
+         $credentials = $request->getCredentials();
 
-        $remember = $request->has('remember') ? true : false;
+        if (!Auth::attempt($credentials, $request->filled('remember'))) {
+            return redirect()->route('flyingmusic.login')->withErrors([
+                'login' => 'Las credenciales no coinciden.',
+            ])->withInput();
+        }
+
+        $request->session()->regenerate();
+
+        return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
+    
+
+        /*$credentials = $request->getCredentials();
+        if (Auth::validate($credentials)){
+            return redirect()->to('flyingmusic.login')->withErrors([
+                'email' => 'Las credenciales no coinciden.',
+            ]);
+        }
+        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+        Auth::login($user, $request->filled('remember'));
+        return $this->authenticated($request, $user);
+
+        /*$remember = $request->has('remember') ? true : false;
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->route('music.index')->with('success', 'Has iniciado sesión correctamente.');
+            return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
         }else {
             return back()->withErrors([
                 'email' => 'Las credenciales no coinciden.',
@@ -82,6 +107,11 @@ class PagesController extends Controller
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden.',
         ]);*/
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+        return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
     }
 
     public function logout(Request $request)

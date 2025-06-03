@@ -10,7 +10,7 @@ class MusicController extends Controller
     public function index()
     {
         $songs = Music::all();
-        return view('music.index', compact('songs'));
+        return view('musica.index', compact('songs'));
     }
 
     public function store(Request $request)

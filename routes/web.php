@@ -18,7 +18,7 @@ Route::post('/register', [PagesController::class, 'register'])->name('flyingmusi
 
 Route::get('/log_in', [PagesController::class, 'log_in'])->name('flyingmusic.login');
 
-Route::post('/log', [AuthenticatedSessionController::class, 'log'])->name('flyingmusic.log');
+Route::post('/log', [PagesController::class, 'log'])->name('flyingmusic.log');
 
 Route::get('/music', [MusicController::class, 'index'])->name('flyingmusic.music');
 

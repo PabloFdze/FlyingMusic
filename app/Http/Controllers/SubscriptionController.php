@@ -74,7 +74,7 @@ class SubscriptionController extends Controller
             $user->save();
 
             Auth::login($user); // Inicia sesión si quieres
-            return redirect()->route('music.index')->with('success', '¡Ahora eres usuario Premium!');
+            return redirect()->route('flying.music')->with('success', '¡Ahora eres usuario Premium!');
         }
 
         return back()->withErrors([
