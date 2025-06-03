@@ -21,7 +21,7 @@
             <form action="{{ route('flyingmusic.log') }}" method="POST">
                 @csrf
                 <div class="input-group">
-                    <label for="username">Correo electrónico o nombre de usuario</label>
+                    <label for="username">Correo electrónico</label>
                     <input type="text" id="username" placeholder="Correo electrónico o nombre de usuario" required>
                 </div>
                 <div class="input-group">

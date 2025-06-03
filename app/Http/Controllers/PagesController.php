@@ -60,36 +60,27 @@ class PagesController extends Controller
     //Iniciar sesión
      public function log(Request $request){
          
-        // Validar los datos del formulario
-        $request->validate([
-            'name' => 'nullable|string|max:50',
-            'email' => 'nullable|email',
-            'password' => 'required|string|min:8|max:50',
-        ]);
+         $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|string|min:8|max:50',
+    ]);
 
-        // Intentar autenticar al usuario
-     $credentials = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+    $credentials = [
+        'email' => $request->email,
+        'password' => $request->password,
+    ];
 
-        $remember = ($request->has('remember') ? true : false);
-
-    if (Auth::attempt($credentials, $remember)) {
-            // Regenerar el token de sesión para prevenir ataques de fijación de sesión
-            $request->session()->regenerate();
-            return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
-        }
-        // Si las credenciales son incorrectas, redirigir de vuelta con un mensaje de error
-
-        return redirect()->back()->withErrors(['email' => 'Credenciales incorrectas.']);
-
-      
+    if (Auth::attempt($credentials, $request->has('remember'))) {
+        $request->session()->regenerate();
+        return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
     }
 
-       
+    return redirect()->back()->withErrors(['email' => 'Credenciales incorrectas.']);
+}
     
+
+       
+
 
     public function logout(Request $request)
     {

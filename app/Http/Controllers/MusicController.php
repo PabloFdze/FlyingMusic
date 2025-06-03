@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class MusicController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $songs = Music::all();
+         $query = $request->input('search');
+
+        $songs = Music::when($query, function ($q) use ($query) {
+        $q->where('title', 'like', "%{$query}%")
+          ->orWhere('artist', 'like', "%{$query}%");
+        })->get();
         return view('musica.index', compact('songs'));
     }
 
@@ -18,7 +23,7 @@ class MusicController extends Controller
          $request->validate([
         'title' => 'required|string|max:255',
         'artist' => 'nullable|string|max:255',
-        'file' => 'required|mimes:mp3,wav|max:10240', // 10MB máximo
+        'file' => 'required|mimes:mp3,wav|max:10240', 
     ]);
 
     // Guardar el archivo en public/songs
@@ -34,20 +39,5 @@ class MusicController extends Controller
     $song->save();
 
     return redirect()->back()->with('success', 'Canción subida correctamente');
-        /*$request->validate([
-            'title' => 'required|string|max:255',
-            'artist' => 'nullable|string|max:255',
-            'file' => 'required|mimes:mp3,wav|max:20000',
-        ]);
-
-        $path = $request->file('file')->store('public/music');
-
-        Music::create([
-            'title' => $request->input('title'),
-            'artist' => $request->input('artist'),
-            'file_path' => str_replace('public/', 'storage/', $path),
-        ]);
-
-        return redirect()->back()->with('success', 'Canción subida con éxito.');*/
     }
 }

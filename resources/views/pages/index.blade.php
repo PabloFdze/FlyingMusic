@@ -1,10 +1,9 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FlyingMusic</title>
-     <link rel="stylesheet" href="{{ asset('css/pages_index.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
@@ -20,7 +19,7 @@
             border: none;
         }
         .btn-primary:hover {
-            background-color: #d81b60;
+            background-color: #ff7dad;
         }
         .btn-outline-light {
             border-color: #fff;
@@ -102,7 +101,7 @@
                             <li>Toda la música a tu disposición</li>
                         </ul>
                         <form action="{{ route('premium.access') }}">
-                            <button type="submit" class="btn btn-primary w-100">Regístrate</button>
+                            <button type="submit" class="btn btn-outline-light w-100">Regístrate</button>
                         </form>
                     </div>
                 </div>
@@ -118,7 +117,7 @@
                             <li>Cancela cuando quieras</li>
                         </ul>
                         <form action="{{ route('premium.access') }}">
-                            <button type="submit" class="btn btn-primary w-100">Probar gratis durante 1 mes</button>
+                            <button type="submit" class="btn btn-outline-light w-100">Probar gratis durante 1 mes</button>
                         </form>
                         <p class="mt-2"><a href="{{ asset('pdf/Condiciones FlyingMusic.pdf') }}" class="text-secondary text-decoration-underline">Consulta las condiciones</a></p>
                     </div>
