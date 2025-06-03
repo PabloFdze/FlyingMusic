@@ -30,15 +30,5 @@
     @endforeach
 </div>
 
-    <!-- Opcional: Player fijo abajo (última canción reproducida o en cola futura) -->
-    {{-- <div class="music-player">
-        <div class="song-info">
-            <span class="song-title">Nombre de canción</span>
-            <span class="song-artist">Artista</span>
-        </div>
-        <audio controls>
-            <source src="URL_DEL_AUDIO.mp3" type="audio/mpeg">
-        </audio>
-    </div> --}}
 </body>
 </html>

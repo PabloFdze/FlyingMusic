@@ -32,9 +32,9 @@
                     <input type="checkbox" id="remember">
                     <label for="remember">Recuérdame</label>
                 </div>
-                <form action="{{route('flyingmusic.music')}}">
-                    <button type="submit" class="btn login">Iniciar sesión</button>
-                </form>
+               
+                <button type="submit" class="btn login">Iniciar sesión</button>
+                
                 <a href="#" class="forgot-password">¿Se te ha olvidado la contraseña?</a>
             </form>
             <div class="signup-link">

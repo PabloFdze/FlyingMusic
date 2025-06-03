@@ -33,9 +33,7 @@
                 <label for="password_confirmation">Confirmar Contraseña</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repite la contraseña" required>
             </div>
-            <form action="{{route('flyingmusic.music')}}">
             <button type="submit" class="submit-button">Registrarme</button>
-            </form>
         </form>
         </form>
         <div class="social-buttons">

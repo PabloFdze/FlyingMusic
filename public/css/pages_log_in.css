@@ -110,7 +110,7 @@ form {
 }
 
 .btn.login {
-    background-color: #fffb00b9;
+    background-color: #ff008cec;
     color: #fff;
     width: 100%;
     padding: 0.75rem;
@@ -120,19 +120,19 @@ form {
 }
 
 .btn.login:hover {
-    background-color: #6f00ff;
+    background-color: #f555a5;
 }
 
 .forgot-password,
 .signup-link {
-    color: #0059ff;
+    color: #ffffff;
     text-align: center;
     margin-top: 1rem;
     text-decoration: none;
 }
 
 .signup-link a {
-    color: #11d0d6;
+    color: #fc0093;
     text-decoration: none;
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PagesController extends Controller
 {
@@ -16,7 +17,9 @@ class PagesController extends Controller
     //Vista página para registro de usuario
     public function sign_in()
     {
-    
+        if (Auth::user()) {
+        return redirect()->route('music.index');
+    }
         return view('pages.sign_in');
     }
     //Registro de usuario
@@ -29,11 +32,18 @@ class PagesController extends Controller
             'password_confirmation' => 'required|same:password',
         ]);
 
-        User::create([
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+        Auth::login($user);
+
+        /*User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-        ]);
+            'password' => Hash::make($request->password),
+        ]);*/
 
         return redirect()->route('music.index')->with('success', 'Usuario registrado correctamente');
 
@@ -48,7 +58,21 @@ class PagesController extends Controller
     //Iniciar sesión
      public function log(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:8|max:50',
+        ]);
+
+        $remember = $request->has('remember') ? true : false;
+        if (Auth::attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+            return redirect()->route('music.index')->with('success', 'Has iniciado sesión correctamente.');
+        }else {
+            return back()->withErrors([
+                'email' => 'Las credenciales no coinciden.',
+            ]);
+        }
+        /*$credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -57,7 +81,7 @@ class PagesController extends Controller
 
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden.',
-        ]);
+        ]);*/
     }
 
     public function logout(Request $request)
