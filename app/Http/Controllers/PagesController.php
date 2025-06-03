@@ -63,56 +63,22 @@ class PagesController extends Controller
     }
 
     //Iniciar sesión
-     public function log(LoginRequest $request)
-    {
-         $credentials = $request->getCredentials();
+     public function log(LoginRequest $request){
+         
+     $credentials = $request->credentials();
 
-        if (!Auth::attempt($credentials, $request->filled('remember'))) {
-            return redirect()->route('flyingmusic.login')->withErrors([
-                'login' => 'Las credenciales no coinciden.',
-            ])->withInput();
-        }
-
-        $request->session()->regenerate();
-
-        return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
-    
-
-        /*$credentials = $request->getCredentials();
-        if (Auth::validate($credentials)){
-            return redirect()->to('flyingmusic.login')->withErrors([
-                'email' => 'Las credenciales no coinciden.',
-            ]);
-        }
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
-        Auth::login($user, $request->filled('remember'));
-        return $this->authenticated($request, $user);
-
-        /*$remember = $request->has('remember') ? true : false;
-        if (Auth::attempt($credentials, $remember)) {
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
             return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
-        }else {
-            return back()->withErrors([
-                'email' => 'Las credenciales no coinciden.',
-            ]);
-        }
-        /*$credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('music.index');
         }
 
         return back()->withErrors([
-            'email' => 'Las credenciales no coinciden.',
-        ]);*/
+            'login' => 'Las credenciales no coinciden.',
+        ])->onlyInput('login');
     }
 
-    public function authenticated(Request $request, $user)
-    {
-        return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
-    }
+       
+    
 
     public function logout(Request $request)
     {
