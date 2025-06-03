@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class SubscriptionController extends Controller
 {
@@ -63,22 +64,29 @@ class SubscriptionController extends Controller
     {
 
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        'email' => 'required|email',
+        'password' => 'required',
+        'card_brand' => 'required|string|max:20',
+        'card_number' => 'required|digits_between:13,19',
+    ]);
 
-        $user = User::where('email', $request->email)->first();
+    $user = User::where('email', $request->email)->first();
 
-        if ($user && Hash::check($request->password, $user->password)) {
-            $user->is_premium = true;
-            $user->save();
+    if ($user && Hash::check($request->password, $user->password)) {
+        $last4 = Str::substr(preg_replace('/\D/', '', $request->card_number), -4);
 
-            Auth::login($user); // Inicia sesión si quieres
-            return redirect()->route('flying.music')->with('success', '¡Ahora eres usuario Premium!');
-        }
+        $user->is_premium = true;
+        $user->card_brand = $request->card_brand;
+        $user->card_last_digits = $last4;
+        $user->save();
 
-        return back()->withErrors([
-            'email' => 'Credenciales incorrectas o usuario no registrado.'
-        ]);
+        Auth::login($user);
+
+        return redirect()->route('flying.music')->with('success', '¡Ahora eres usuario Premium!');
     }
+
+    return back()->withErrors([
+        'email' => 'Credenciales incorrectas o usuario no registrado.'
+    ]);
+}
 }

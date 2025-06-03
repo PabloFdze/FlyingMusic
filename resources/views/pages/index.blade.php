@@ -48,6 +48,20 @@
             color: #e91e63 !important;
             text-decoration: none;
         }
+        .text-pink {
+            color: #f80778;
+        }
+
+        .btn-custom-color {
+            background-color: none;
+            color: white;
+            border-color: #fff
+        }
+        .btn-custom-color:hover {
+            background-color: #f7015f;
+            color: rgb(255, 255, 255);
+        }
+
     </style>
 </head>
 <body>
@@ -92,7 +106,7 @@
             <div class="col-md-3">
                 <div class="card bg-dark text-light">
                     <div class="card-body">
-                        <h5 class="card-title text-danger">Gratis</h5>
+                        <h5 class="card-title text-pink">Gratis</h5>
                         <p>Para todos</p>
                         <ul class="text-start">
                             <li>Escucha música gratis</li>
@@ -101,7 +115,7 @@
                             <li>Toda la música a tu disposición</li>
                         </ul>
                         <form action="{{ route('premium.access') }}">
-                            <button type="submit" class="btn btn-outline-light w-100">Regístrate</button>
+                            <button type="submit" class="btn btn-custom-color w-100">Regístrate</button>
                         </form>
                     </div>
                 </div>
@@ -110,14 +124,14 @@
             <div class="col-md-3">
                 <div class="card bg-dark text-light">
                     <div class="card-body">
-                        <h5 class="card-title text-danger">Individual</h5>
+                        <h5 class="card-title text-pink">Individual</h5>
                         <p>Gratis durante 1 mes, luego 10,99 €/mes.</p>
                         <ul class="text-start">
                             <li>1 cuenta Premium</li>
                             <li>Cancela cuando quieras</li>
                         </ul>
                         <form action="{{ route('premium.access') }}">
-                            <button type="submit" class="btn btn-outline-light w-100">Probar gratis durante 1 mes</button>
+                            <button type="submit" class="btn btn-custom-color w-100">Probar gratis durante 1 mes</button>
                         </form>
                         <p class="mt-2"><a href="{{ asset('pdf/Condiciones FlyingMusic.pdf') }}" class="text-secondary text-decoration-underline">Consulta las condiciones</a></p>
                     </div>
@@ -127,7 +141,7 @@
             <div class="col-md-3">
                 <div class="card bg-dark text-light">
                     <div class="card-body">
-                        <h5 class="card-title text-danger">Estudiantes</h5>
+                        <h5 class="card-title text-pink">Estudiantes</h5>
                         <p>Gratis durante 1 mes, luego 5,99 €/mes.</p>
                         <ul class="text-start">
                             <li>1 cuenta Premium verificada</li>
@@ -135,7 +149,7 @@
                             <li>Cancela cuando quieras</li>
                         </ul>
                         <form action="{{ route('premium.access') }}">
-                            <button type="submit" class="btn btn-outline-light w-100">Probar gratis durante 1 mes</button>
+                            <button type="submit" class="btn btn-custom-color w-100">Probar gratis durante 1 mes</button>
                         </form>
                         <p class="mt-2"><a href="{{ asset('pdf/Condiciones FlyingMusic.pdf') }}" class="text-secondary text-decoration-underline">Consulta las condiciones</a></p>
                     </div>
@@ -145,7 +159,7 @@
             <div class="col-md-3">
                 <div class="card bg-dark text-light">
                     <div class="card-body">
-                        <h5 class="card-title text-danger">Familiar</h5>
+                        <h5 class="card-title text-pink">Familiar</h5>
                         <p>17,99 €/mes.</p>
                         <ul class="text-start">
                             <li>Hasta 6 cuentas Premium</li>
@@ -153,7 +167,7 @@
                             <li>Cancela cuando quieras</li>
                         </ul>
                         <form action="{{ route('premium.access') }}">
-                            <button type="submit" class="btn btn-outline-light w-100">Conseguir Premium Familiar</button>
+                            <button type="submit" class="btn btn-custom-color w-100">Conseguir Premium Familiar</button>
                         </form>
                     </div>
                 </div>

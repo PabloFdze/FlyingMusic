@@ -41,7 +41,7 @@
         }
 
         .card-title {
-            color: #00ffd5;
+            color: #ff0077;
         }
 
         .audio-player {
@@ -55,34 +55,63 @@
             border-radius: 50%;
             box-shadow: 0 0 5px rgba(255,255,255,0.2);
         }
+        audio {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        }
+        .custom-search-btn {
+        color: #ff0095;
+        border-color: #ff008c;
+        }
+
+        .custom-search-btn:hover {
+        background-color: #fa61bf;
+        color: #121212;
+        border-color: #fc60c0;
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Logo y navegación -->
-    <nav class="navbar navbar-dark shadow-sm">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <form action="{{ route('flyingmusic.index') }}" method="GET" class="m-0">
-                <button class="btn logo-btn p-0 border-0 bg-transparent" type="submit">
-                    <img src="{{ asset('img/flying.jpg') }}" alt="FlyingMusic Logo">
-                </button>
-            </form>
-            <span class="text-white">Bienvenido, @auth {{ Auth::user()->name }} @endauth</span>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #1c1c1c;"> 
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+        {{-- Logo a la izquierda --}}
+        <form action="{{ route('flyingmusic.index') }}" method="GET" class="m-0">
+            <button class="btn logo-btn p-0 border-0 bg-transparent" type="submit">
+                <img src="{{ asset('img/flying.jpg') }}" alt="FlyingMusic Logo" style="height: 40px;">
+            </button>
+        </form>
+
+        {{-- Texto de bienvenida --}}
+        <span class="text-white mb-0 mx-3">Bienvenido, @auth {{ Auth::user()->name }} @endauth</span>
+
+        {{-- Botón de cerrar sesión --}}
+        <form action="{{ route('flyingmusic.logout') }}" method="POST" class="m-0">
+            @csrf
+            <button type="submit" class="btn btn-outline-info  custom-search-btn">Cerrar sesión</button>
+        </form>
+
+    </div>
+</nav>
+
 
       <!-- Título y barra de búsqueda -->
-        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap mt-4">
             <h2 class="text-light mb-3 mb-md-0">🎵 Canciones disponibles</h2>
-            <form method="GET" action="{{ route('flyingmusic.music') }}" class="d-flex" role="search">
+            <form method="GET" action="{{ route('flyingmusic.music') }}" class="mt-6 d-flex" role="search">
                 <input type="text" name="search" class="form-control me-2" placeholder="Buscar canción o artista..." value="{{ request('search') }}">
-                <button class="btn btn-outline-info" type="submit">Buscar</button>
+                <button class="btn btn-outline-info custom-search-btn" type="submit">Buscar</button>
             </form>
         </div>
 
         <div class="row">
             @foreach ($songs as $song)
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4 mb-4 mt-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title">{{ $song->title }}</h5>
