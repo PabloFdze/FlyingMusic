@@ -27,27 +27,22 @@ class PagesController extends Controller
     //Registro de usuario
     public function register(StoreUserRequest $request)
     {
-        $user = User::create($request->validated());
-
-        /*$request->validate([
-            'name' => 'required|string|max:50',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|max:50',
-            'password_confirmation' => 'required|same:password',
-        ]);
-
+        //validación de los datos del formulario
+        $request->validated();
+        // Verificar si el usuario ya existe
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->back()->withErrors(['email' => 'El correo electrónico ya está en uso.']);
+        }
+        // Crear un nuevo usuario
         $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
         $user->save();
-        Auth::login($user);*/
+        // Autenticar al usuario después del registro
+        Auth::login($user);
 
-        /*User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->password),
-        ]);*/
+      
 
         return redirect()->route('flyingmusic.music')->with('success', 'Usuario registrado correctamente');
 
@@ -63,18 +58,34 @@ class PagesController extends Controller
     }
 
     //Iniciar sesión
-     public function log(LoginRequest $request){
+     public function log(Request $request){
          
-     $credentials = $request->credentials();
+        // Validar los datos del formulario
+        $request->validate([
+            'name' => 'nullable|string|max:50',
+            'email' => 'nullable|email',
+            'password' => 'required|string|min:8|max:50',
+        ]);
 
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
+        // Intentar autenticar al usuario
+     $credentials = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        $remember = ($request->has('remember') ? true : false);
+
+    if (Auth::attempt($credentials, $remember)) {
+            // Regenerar el token de sesión para prevenir ataques de fijación de sesión
             $request->session()->regenerate();
             return redirect()->route('flyingmusic.music')->with('success', 'Has iniciado sesión correctamente.');
         }
+        // Si las credenciales son incorrectas, redirigir de vuelta con un mensaje de error
 
-        return back()->withErrors([
-            'login' => 'Las credenciales no coinciden.',
-        ])->onlyInput('login');
+        return redirect()->back()->withErrors(['email' => 'Credenciales incorrectas.']);
+
+      
     }
 
        

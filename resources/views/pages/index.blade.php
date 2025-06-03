@@ -1,119 +1,196 @@
+<<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FlyingMusic</title>
-    <link rel="stylesheet" href="{{ asset('css/pages_index.css') }}">
-   
+     <link rel="stylesheet" href="{{ asset('css/pages_index.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #000000, #1a1a1a);
+            color: #fff;
+        }
+        .navbar {
+            background-color: #111 !important;
+        }
+        .btn-primary {
+            background-color: #e91e63;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #d81b60;
+        }
+        .btn-outline-light {
+            border-color: #fff;
+            color: #fff;
+        }
+        .btn-outline-light:hover {
+            background-color: #e91e63;
+            border-color: #e91e63;
+            color: #fff;
+        }
+        .card.bg-dark {
+            background-color: #222 !important;
+            color: #eee !important;
+            transition: transform 0.3s ease-in-out;
+            cursor: default;
+        }
+        .card.bg-dark:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #111;
+            color: #bbb;
+            padding: 2rem 0;
+        }
+        a.text-light:hover {
+            color: #e91e63 !important;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="title-container">
-                <div class="logo-title-container">
-                <img src="{{ asset('img/flying.jpg') }}" alt="FlyingMusic Logo" class="logo-image">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="{{ asset('img/flying.jpg') }}" alt="FlyingMusic" height="40" class="me-2" />
+                FlyingMusic
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+           
+                <div class="d-flex">
+                    <a href="{{ route('flyingmusic.sign_in') }}" class="btn btn-outline-light me-2">Registrarse</a>
+                    <a href="{{ route('flyingmusic.login') }}" class="btn btn-primary">Iniciar sesión</a>
                 </div>
-                <div class="logo">FlyingMusic</div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="{{route('flyingmusic.sign_in')}}"><button class="primary-btn-header">Registrarse</button></a></li>
-                    <li><a href="{{route('flyingmusic.login')}}"><button class="primary-btn-header">Iniciar sesión</button></a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
-    
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Prepárate para volar.</h1>
-                <p>Prueba Premium Individual gratis durante 1 mes.</p>
-                <p>Después, solo 10,99 €/mes. Cancelas cuando quieras.</p>
-                <div class="buttons">
-                    <form action="{{route('premium.access')}}">
-                        <button class="primary-btn">Probar gratis durante 1 mes</button>
-                    </form>
-                </div>
-                <p class="disclaimer"> <a href="{{asset('pdf/Condiciones FlyingMusic.pdf')}}">Consulta las condiciones.</a></p>
+    </nav>
+
+    <!-- Hero -->
+    <section class="text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeIn">Prepárate para volar.</h1>
+            <p class="lead mb-2">Prueba Premium Individual gratis durante 1 mes.</p>
+            <p class="lead mb-4">Después, solo 10,99 €/mes. Cancelas cuando quieras.</p>
+            <form action="{{ route('premium.access') }}">
+                <button type="submit" class="btn btn-primary btn-lg">Probar gratis durante 1 mes</button>
+            </form>
+            <div class="mt-3">
+                <a href="{{ asset('pdf/Condiciones FlyingMusic.pdf') }}" class="text-decoration-underline text-secondary">Consulta las condiciones</a>
             </div>
-            <div class="hero-images">
-                <img src="img/" alt="">
-            </div>
-            <br>
-            <br>
-        </section>
-        <h2 class="plan-title">Elige tu plan</h2>
-        <section class="plans">
-            <div class="plan-cards">
-                <div class="plan-card">
-                    <div class="plan-header">Gratis</div>
-                        <div class="plan-body">
-                            <h3>Para todos</h3>
-                            <ul>
-                                <li>Escucha música gratis</li><br>
-                                <li>Anuncios cada 30 minutos</li><br>
-                                <li>Sin límite de saltos</li><br>
-                                <li>Toda la música a tu disposición</li><br>
-                            </ul>
-                            <form action="{{route('premium.access')}}">
-                            <button class="primary-btn">Registrate</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            <div class="plan-card">
-                <div class="plan-header">Gratis durante 1 mes</div>
-                    <div class="plan-body">
-                        <h3>Individual</h3>
-                        <ul>
-                            <li>Gratis durante 1 mes</li><br>
-                            <li>Después, 10,99 €/mes</li><br>
-                            <li>1 cuenta Premium</li><br>
-                            <li>Cancela cuando quieras</li><br>
+        </div>
+    </section>
+
+    <!-- Planes -->
+    <section class="container text-center mb-5">
+        <h2 class="mb-4">Elige tu plan</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-3">
+                <div class="card bg-dark text-light">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Gratis</h5>
+                        <p>Para todos</p>
+                        <ul class="text-start">
+                            <li>Escucha música gratis</li>
+                            <li>Anuncios cada 30 minutos</li>
+                            <li>Sin límite de saltos</li>
+                            <li>Toda la música a tu disposición</li>
                         </ul>
-                        <form action="{{route('premium.access')}}">
-                            <button class="primary-btn">Probar gratis durante 1 mes</button>
+                        <form action="{{ route('premium.access') }}">
+                            <button type="submit" class="btn btn-primary w-100">Regístrate</button>
                         </form>
-                        <p class="disclaimer"><a href="{{asset('pdf/Condiciones FlyingMusic.pdf')}}">Consulta las condiciones.</a></p>
                     </div>
                 </div>
             </div>
-                <div class="plan-card">
-                    <div class="plan-header">Gratis durante 1 mes</div>
-                    <div class="plan-body">
-                        <h3>Estudiantes</h3>
-                        <ul>
-                            <li>Gratis durante 1 mes</li><br>
-                            <li>Después, 5,99 €/mes</li><br>
-                            <li>1 cuenta Premium verificada</li><br>
-                            <li>Descuento para estudiantes que cumplan los requisitos</li><br>
-                            <li>Cancela cuando quieras</li><br>
+
+            <div class="col-md-3">
+                <div class="card bg-dark text-light">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Individual</h5>
+                        <p>Gratis durante 1 mes, luego 10,99 €/mes.</p>
+                        <ul class="text-start">
+                            <li>1 cuenta Premium</li>
+                            <li>Cancela cuando quieras</li>
                         </ul>
-                        <form action="{{route('premium.access')}}">
-                            <button class="secondary-btn">Probar gratis durante 1 mes</button>
+                        <form action="{{ route('premium.access') }}">
+                            <button type="submit" class="btn btn-primary w-100">Probar gratis durante 1 mes</button>
                         </form>
-                        <p class="disclaimer"> <a href="{{asset('pdf/Condiciones FlyingMusic.pdf')}}">Consulta las condiciones.</a></p>
+                        <p class="mt-2"><a href="{{ asset('pdf/Condiciones FlyingMusic.pdf') }}" class="text-secondary text-decoration-underline">Consulta las condiciones</a></p>
                     </div>
                 </div>
             </div>
-                <div class="plan-card">
-                    <div class="plan-header">Gratis durante 1 mes</div>
-                    <div class="plan-body">
-                        <h3>Familiar</h3>
-                        <ul>
-                            <li>17,99 €/mes</li><br>
-                            <li>Hasta 6 cuentas Premium</li><br>
-                            <li>Controla el contenido etiquetado como explícito</li><br>
-                            <li>Cancela cuando quieras</li><br>
+
+            <div class="col-md-3">
+                <div class="card bg-dark text-light">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Estudiantes</h5>
+                        <p>Gratis durante 1 mes, luego 5,99 €/mes.</p>
+                        <ul class="text-start">
+                            <li>1 cuenta Premium verificada</li>
+                            <li>Descuento para estudiantes que cumplan los requisitos</li>
+                            <li>Cancela cuando quieras</li>
                         </ul>
-                        <form action="{{route('premium.access')}}"><button class="secondary-btn">Conseguir Premium Familiar</button></form>
+                        <form action="{{ route('premium.access') }}">
+                            <button type="submit" class="btn btn-outline-light w-100">Probar gratis durante 1 mes</button>
+                        </form>
+                        <p class="mt-2"><a href="{{ asset('pdf/Condiciones FlyingMusic.pdf') }}" class="text-secondary text-decoration-underline">Consulta las condiciones</a></p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    
+
+            <div class="col-md-3">
+                <div class="card bg-dark text-light">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Familiar</h5>
+                        <p>17,99 €/mes.</p>
+                        <ul class="text-start">
+                            <li>Hasta 6 cuentas Premium</li>
+                            <li>Controla el contenido etiquetado como explícito</li>
+                            <li>Cancela cuando quieras</li>
+                        </ul>
+                        <form action="{{ route('premium.access') }}">
+                            <button type="submit" class="btn btn-outline-light w-100">Conseguir Premium Familiar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 FlyingMusic Online. Todos los derechos reservados.</p>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>FlyingMusic</h5>
+                    <p>Tu destino para disfrutar la mejor música.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Menú</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Inicio</a></li>
+                        <li><a href="#" class="text-light">Planes</a></li>
+                        <li><a href="#" class="text-light">Términos</a></li>
+                        <li><a href="#" class="text-light">Ayuda</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Síguenos</h5>
+                    <a href="#" class="text-light me-2"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-light me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <hr class="bg-secondary" />
+            <p class="mb-0">&copy; 2025 FlyingMusic. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>

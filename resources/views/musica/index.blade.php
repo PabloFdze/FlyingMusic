@@ -12,7 +12,9 @@
                 <button class="logo">
                 <img src="{{asset('img/flying.jpg')}}" alt="Logo de FlyingMusic" class="logo"></img>
                 </button>
-            </form>
+    </form>
+
+    <h1>Bienvenido @auth {{Auth::user()->name}} @endauth </h1>
 
     <h2>Canciones</h2>
     <div class="song-list">
