@@ -31,11 +31,21 @@ class MusicController extends Controller
     $fileName = time() . '_' . $file->getClientOriginalName();
     $file->move(public_path('songs'), $fileName);
 
+    // Si se proporciona una imagen, guardarla en public/img
+     $imagePath = null;
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('img'), $imageName);
+        $imagePath = 'img/' . $imageName;
+    }
+
     // Guardar en la base de datos
     $song = new Music();
     $song->title = $request->title;
     $song->artist = $request->artist;
     $song->file_path = 'songs/' . $fileName;
+    $song->image_path = $imagePath;
     $song->save();
 
     return redirect()->back()->with('success', 'Canción subida correctamente');

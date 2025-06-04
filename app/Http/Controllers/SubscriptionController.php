@@ -11,9 +11,14 @@ use Illuminate\Support\Str;
 
 class SubscriptionController extends Controller
 {
-    public function premiumPage()
+    public function premiumPage(Request $request)
     {
-         $songs = Music::all();
+        $query = $request->input('search');
+
+        $songs = Music::when($query, function ($q) use ($query) {
+        $q->where('title', 'like', "%{$query}%")
+          ->orWhere('artist', 'like', "%{$query}%");
+        })->get();
         return view(('premium.premium'), compact('songs'));
     }
 
@@ -32,11 +37,21 @@ class SubscriptionController extends Controller
     $fileName = time() . '_' . $file->getClientOriginalName();
     $file->move(public_path('songs'), $fileName);
 
+     // Si se proporciona una imagen, guardarla en public/img
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('img'), $imageName);
+        $imagePath = 'img/' . $imageName;
+    }
+
     // Guardar en la base de datos
     $song = new Music();
     $song->title = $request->title;
     $song->artist = $request->artist;
     $song->file_path = 'songs/' . $fileName;
+    $song->image_path = $imagePath;
     $song->save();
 
     return redirect()->back()->with('success', 'Canción subida correctamente');
@@ -82,7 +97,7 @@ class SubscriptionController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('flying.music')->with('success', '¡Ahora eres usuario Premium!');
+        return redirect()->route('premium.page')->with('success', '¡Ahora eres usuario Premium!');
     }
 
     return back()->withErrors([
