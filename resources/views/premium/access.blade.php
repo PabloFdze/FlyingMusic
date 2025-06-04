@@ -92,13 +92,13 @@
     <p class="text-start text-light fw-bold">Información de tarjeta</p>
 
     <div class="mb-3 text-start">
-        <label for="cardName" class="form-label">Nombre en la tarjeta</label>
-        <input type="text" id="cardName" class="form-control" placeholder="Ej: Juan Pérez" required>
+        <label for="cardName" class="form-label">Compañía</label>
+        <input type="text" id="cardName" class="form-control" placeholder="Ej: Visa" required>
     </div>
 
     <div class="mb-3 text-start">
-        <label for="cardNumber" class="form-label ">Número de tarjeta</label>
-        <input type="text" id="cardNumber" class="form-control " placeholder="1234 5678 9012 3456" required>
+        <label for="cardNumber" class="form-label ">Últimos 4 números de la tarjeta</label>
+        <input type="text" id="cardNumber" class="form-control " placeholder="3456" required>
     </div>
 
     <div class="row mb-3">

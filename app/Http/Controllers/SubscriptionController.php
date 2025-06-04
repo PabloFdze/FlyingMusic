@@ -44,6 +44,8 @@ class SubscriptionController extends Controller
         $imageName = time() . '_' . $image->getClientOriginalName();
         $image->move(public_path('img'), $imageName);
         $imagePath = 'img/' . $imageName;
+    }else{
+        $imagePath = 'img/default.png'; 
     }
 
     // Guardar en la base de datos
@@ -81,8 +83,8 @@ class SubscriptionController extends Controller
         $request->validate([
         'email' => 'required|email',
         'password' => 'required',
-        'card_brand' => 'required|string|max:20',
-        'card_number' => 'required|digits_between:13,19',
+        'card_brand' => 'string|max:20',
+        'card_number' => 'digits_between:13,19',
     ]);
 
     $user = User::where('email', $request->email)->first();

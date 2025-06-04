@@ -77,9 +77,9 @@
 
 
         .form-control, .form-file {
-            background-color: #1c1c1c;
-            color: white;
-            border: 1px solid #333;
+            background-color: #6b6a6a;
+            color: rgb(218, 209, 209);
+            border: 1px solid #202020;
         }
 
         .custom-search-btn {
@@ -138,15 +138,17 @@
             <input type="file" name="file" class="form-control" accept=".mp3,.wav" required>
         </div>
         <div class="mb-3">
-             <input type="file" name="image" accept="image/*"><br> 
-        </div>
+        <label for="image" class="form-label">Portada:</label>
+        <input type="file" id="image" name="image" class="form-control" accept="image/*">
+        <img id="preview" class="img-fluid mt-3 d-none rounded" style="max-height: 200px;">
+</div>
         <button type="submit" class="btn custom-btn">Subir canción</button>
     </form>
 
     <!-- Lista de canciones -->
      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap mt-4">
             <h2 class="text-light mb-3 mb-md-0">🎵 Canciones disponibles</h2>
-            <form method="GET" action="{{ route('flyingmusic.music') }}" class="mt-6 d-flex" role="search">
+            <form method="GET" action="{{ route('premium.page') }}" class="mt-6 d-flex" role="search">
                 <input type="text" name="search" class="form-control me-2" placeholder="Buscar canción o artista..." value="{{ request('search') }}">
                 <button class="btn btn-outline-info custom-search-btn" type="submit">Buscar</button>
             </form>
@@ -179,7 +181,32 @@
     </div>
 </div>
 
-<!-- Bootstrap JS -->
+   <!-- Modal de confirmación -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">¿Estás seguro?</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        Esta acción eliminará la canción de forma permanente.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="confirmDeleteBtn" type="button" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script src="{{ asset('js/confirm.js') }}"></script>
+    <script src="{{ asset('js/imagepreview.js') }}"></script>
+    <script src="{{ asset('js/occultalerts.js') }}"></script>
+    <script src="{{ asset('js/onlyonesong.js') }}"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

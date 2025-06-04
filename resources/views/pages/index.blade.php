@@ -8,8 +8,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         body {
-            background: linear-gradient(to bottom right, #000000, #1a1a1a);
+            background: linear-gradient(to bottom right, #000000, #383737);
             color: #fff;
+            padding-top: 80px;
         }
         .navbar {
             background-color: #111 !important;
@@ -42,7 +43,7 @@
         footer {
             background-color: #111;
             color: #bbb;
-            padding: 2rem 0;
+            padding: 3rem 0;
         }
         a.text-light:hover {
             color: #e91e63 !important;
@@ -62,11 +63,26 @@
             color: rgb(255, 255, 255);
         }
 
+        @keyframes pulseWidth {
+        0%, 100% {
+        transform: scaleX(1);
+        }
+        50% {
+        transform: scaleX(1.05);
+        }
+        }
+    
+
+.btn-animate-width {
+  animation: pulseWidth 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="{{ asset('img/flying.jpg') }}" alt="FlyingMusic" height="40" class="me-2" />
@@ -91,7 +107,7 @@
             <p class="lead mb-2">Prueba Premium Individual gratis durante 1 mes.</p>
             <p class="lead mb-4">Después, solo 10,99 €/mes. Cancelas cuando quieras.</p>
             <form action="{{ route('premium.access') }}">
-                <button type="submit" class="btn btn-primary btn-lg">Probar gratis durante 1 mes</button>
+                <button type="submit" class="btn btn-primary btn-lg" id="PorbarGratis">Probar gratis durante 1 mes</button>
             </form>
             <div class="mt-3">
                 <a href="{{ asset('pdf/Condiciones FlyingMusic.pdf') }}" class="text-decoration-underline text-secondary">Consulta las condiciones</a>
@@ -114,7 +130,7 @@
                             <li>Sin límite de saltos</li>
                             <li>Toda la música a tu disposición</li>
                         </ul>
-                        <form action="{{ route('premium.access') }}">
+                        <form action="{{ route('flyingmusic.sign_in') }}">
                             <button type="submit" class="btn btn-custom-color w-100">Regístrate</button>
                         </form>
                     </div>
@@ -194,16 +210,18 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Síguenos</h5>
-                    <a href="#" class="text-light me-2"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-light me-2"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/?locale=es_ES" class="text-light me-2"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/?lang=es" class="text-light me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" class="text-light"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <hr class="bg-secondary" />
-            <p class="mb-0">&copy; 2025 FlyingMusic. Todos los derechos reservados.</p>
+            <p class="mb-0">&copy; <span id="year"></span> FlyingMusic. Todos los derechos reservados.</p>
         </div>
     </footer>
-
+    <script src="{{ asset('js/indexbutton.js') }}"></script>
+    <script src="{{ asset('js/indexpremiumbtn.js') }}"></script>
+    <script src="{{ asset('js/autoyear.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
