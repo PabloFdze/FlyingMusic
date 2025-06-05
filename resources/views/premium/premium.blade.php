@@ -183,12 +183,14 @@
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         @if ($song->image_path)
-                            <div class="d-flex align-items-center bg-dark rounded p-3 mb-3">
+                        <div class="text-center mb-3">
+                            <div class="align-items-center rounded p-3 mb-3 ">
                                 <img src="{{ asset($song->image_path) }}" alt="Portada de {{ $song->title }}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
                             </div>
                         @endif
                         <h5 class="card-title">{{ $song->title }}</h5>
                         <p class="card-text">{{ $song->artist }}</p>
+                        </div>
                         <audio controls class="custom-player mt-2">
                             <source src="{{ asset($song->file_path) }}" type="audio/mpeg">
                             Tu navegador no soporta audio HTML5.
@@ -210,7 +212,7 @@
                             </select>
                             <button type="submit" class="btn btn-sm btn-outline-success">Añadir a Playlist</button>
                         </div>
-</form>
+                        </form>
                     </div>
                 </div>
             </div>
