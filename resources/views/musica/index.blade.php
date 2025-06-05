@@ -193,6 +193,7 @@
                             </div>
                         </div>
                     </a>
+                    
                 </div>
             @empty
                 <p class="text-white">No hay playlists disponibles.</p>

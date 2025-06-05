@@ -63,4 +63,15 @@ class PlaylistController extends Controller
 
     return back()->with('success', 'Canción añadida a la playlist correctamente.');
 }
+
+public function destroy($id)
+{
+    $playlist = Playlist::where('id', $id)
+                        ->where('user_id', Auth::id()) // Asegura que solo borre si es suya
+                        ->firstOrFail();
+
+    $playlist->delete();
+
+    return redirect()->back()->with('success', 'Playlist eliminada correctamente.');
+}
 }
