@@ -100,6 +100,11 @@
                                 <source src="{{ asset($song->file_path) }}" type="audio/mpeg">
                                 Tu navegador no soporta audio HTML5.
                             </audio>
+                            <form action="{{ route('music.destroy', $song->id) }}" method="POST" class="mt-3">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('¿Eliminar esta canción?')" class="btn btn-sm btn-outline-danger w-100 mt-2">Eliminar</button>
+                        </form>
                         </div>
                     </div>
                 </div>
