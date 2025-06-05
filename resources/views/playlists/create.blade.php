@@ -13,6 +13,8 @@
             background-color: #121212;
             color: #f0f0f0;
             font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            
         }
 
         .navbar {
@@ -54,6 +56,26 @@
             border-radius: 50%;
             box-shadow: 0 0 5px rgba(255,255,255,0.2);
         }
+
+        .container{
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            height: 75vh;
+        }
+
+        .container-create {
+            max-width: 800px; 
+            width: 90%;       
+            background-color: #1c1c1c; 
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(233,30,99,0.6);
+            
+        }
     </style>
 </head>
 <body>
@@ -78,6 +100,7 @@
 
 <!-- Contenido -->
 <div class="container mt-5">
+<div class="container-create mt-5">
     <h2 class="mb-4">📝 Crear nueva Playlist</h2>
 
     @if ($errors->any())
@@ -110,6 +133,8 @@
         <a href="{{ route('flyingmusic.index') }}" class="btn btn-outline-light ms-2">Cancelar</a>
     </form>
 </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
