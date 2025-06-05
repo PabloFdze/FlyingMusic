@@ -15,4 +15,9 @@ class Music extends Model
         'artist',
         'file_path',
     ];
+
+      public function playlists()
+    {
+        return $this->belongsToMany(Playlist::class, 'playlist_music');
+    }
 }

@@ -72,6 +72,35 @@
         border-color: #fc60c0;
         }
 
+        /* Estilos para playlists */
+        .playlist-card {
+            border-left: 5px solid #ff0077;
+        }
+
+        .playlist-title {
+            color: #ff0077;
+        }
+
+        .playlist-link {
+            text-decoration: none;
+        }
+        .playlist-link:hover {
+            text-decoration: none;
+            color: #fa61bf;
+        }
+
+        .custom-btn {
+            color: #fff;
+            background-color: #e91e63;
+            border-color: #e91e63;
+        }
+
+        .custom-btn:hover {
+            background-color: #ff7dad;
+            border-color: #ff7dad;
+            color: #fff;
+        }
+
     </style>
 </head>
 <body>
@@ -123,13 +152,54 @@
                                 <source src="{{ asset($song->file_path) }}" type="audio/mpeg">
                                 Tu navegador no soporta audio HTML5.
                             </audio>
+
+                             <form action="{{ route('playlists.addSong') }}" method="POST" class="mt-3">
+                        @csrf
+                        <input type="hidden" name="music_id" value="{{ $song->id }}">
+                        <div class="input-group">
+                            <select name="playlist_id" class="form-select" required>
+                                <option value="" disabled selected>Selecciona una playlist</option>
+                                    @foreach (Auth::user()->playlists as $playlist)
+                                <option value="{{ $playlist->id }}">{{ $playlist->nombre }}</option>
+                                    @endforeach
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-outline-success">Añadir a Playlist</button>
+                        </div>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
+
+     <!-- Sección Playlists -->
+        <h2 class="mt-5 mb-4 text-white">🎶 Playlists</h2>
+        <a href="{{ route('playlists.create') }}" class="btn custom-btn mb-4">Crear nueva Playlist</a>
+
+        <div class="row">
+            @forelse ($playlists as $playlist)
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <a href="{{ route('playlists.show', $playlist->id) }}" class="playlist-link">
+                        <div class="card playlist-card h-100 shadow-sm">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="playlist-title">{{ $playlist->nombre }}</h5>
+                                <small class="text-muted">
+                                    @if ($playlist->user)
+                                        Creador: {{ $playlist->user->name }}
+                                    @endif
+                                </small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @empty
+                <p class="text-white">No hay playlists disponibles.</p>
+            @endforelse
+        </div>
+
+    </div>
     
+     <script src="{{ asset('js/modalplaylist.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

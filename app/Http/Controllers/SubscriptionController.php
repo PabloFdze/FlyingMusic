@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Music;
+use App\Models\Playlist;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -19,9 +20,11 @@ class SubscriptionController extends Controller
         $q->where('title', 'like', "%{$query}%")
           ->orWhere('artist', 'like', "%{$query}%");
         })->get();
-        return view(('premium.premium'), compact('songs'));
-    }
 
+        $playlists = Playlist::where('tipo', 'premium')->get();
+
+        return view(('premium.premium'), compact('songs', 'playlists'));
+    }
     public function store(Request $request)
     {
          $request->validate([

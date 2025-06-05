@@ -26,6 +26,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'artist_verified',
     ];
 
+     public function playlists()
+    {
+        return $this->hasMany(Playlist::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

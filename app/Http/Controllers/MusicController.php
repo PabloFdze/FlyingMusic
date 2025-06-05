@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Music;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 
 class MusicController extends Controller
@@ -15,7 +16,9 @@ class MusicController extends Controller
         $q->where('title', 'like', "%{$query}%")
           ->orWhere('artist', 'like', "%{$query}%");
         })->get();
-        return view('musica.index', compact('songs'));
+
+        $playlists = Playlist::where('tipo', 'music')->get();
+        return view('musica.index', compact('songs', 'playlists'));
     }
 
     public function store(Request $request)

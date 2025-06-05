@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Client\Request;
@@ -36,6 +37,10 @@ Route::delete('/music/{title}', [SubscriptionController::class, 'destroy'])->nam
 
 Route::post('/logout', [PagesController::class, 'logout'])->name('flyingmusic.logout');
 
-
+//Playlist
+Route::get('/playlists/create', [PlaylistController::class, 'create'])->name('playlists.create');
+Route::post('/playlists', [PlaylistController::class, 'store'])->name('playlists.store');
+Route::get('/playlists/{id}', [PlaylistController::class, 'show'])->name('playlists.show');
+Route::post('/playlists/add-song', [PlaylistController::class, 'addSong'])->name('playlists.addSong');
 
 
