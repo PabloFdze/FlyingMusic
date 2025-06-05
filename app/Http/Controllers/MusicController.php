@@ -41,6 +41,8 @@ class MusicController extends Controller
         $imageName = time() . '_' . $image->getClientOriginalName();
         $image->move(public_path('img'), $imageName);
         $imagePath = 'img/' . $imageName;
+    }else{
+        $imagePath = 'img/default.png'; 
     }
 
     // Guardar en la base de datos

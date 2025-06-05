@@ -109,6 +109,13 @@
             text-decoration: none;
             color: #fa61bf;
         }
+
+        .custom-player {
+            width: 100%;
+            background-color: #222;
+            border-radius: 10px;
+            outline: none;
+    }
     </style>
 </head>
 <body>
@@ -182,7 +189,7 @@
                         @endif
                         <h5 class="card-title">{{ $song->title }}</h5>
                         <p class="card-text">{{ $song->artist }}</p>
-                        <audio controls class="audio-player mt-2">
+                        <audio controls class="custom-player mt-2">
                             <source src="{{ asset($song->file_path) }}" type="audio/mpeg">
                             Tu navegador no soporta audio HTML5.
                         </audio>
