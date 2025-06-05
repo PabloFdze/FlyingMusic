@@ -122,6 +122,19 @@
         </form>
         <h2>Inicia sesión en <span class="text-pink">FlyingMusic</span></h2>
 
+          {{-- Mostrar errores generales al principio --}}
+    @if ($errors->any())
+        <div class="alert alert-danger text-start">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+        {{-- Botones de inicio de sesión social --}}
+
         <div class="social-login mb-4">
             <form action="https://accounts.google.com" target="_blank" rel="noopener">
                 <button type="submit" class="btn btn-google"><i class="fab fa-google"></i> Continuar con Google</button>
@@ -136,18 +149,26 @@
 
         <form action="{{ route('flyingmusic.log') }}" method="POST">
             @csrf
-            <div class="mb-3 text-start">
-                <label for="username" class="form-label">Correo electrónico</label>
-                <input type="text" name="email" id="username" class="form-control" placeholder="Correo electrónico o nombre de usuario" required />
-            </div>
-            <div class="mb-3 text-start">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required />
-            </div>
-            <div class="form-check mb-3 text-start">
-                <input type="checkbox" class="form-check-input" id="remember" name="remember" />
-                <label class="form-check-label" for="remember">Recuérdame</label>
-            </div>
+             <div class="mb-3 text-start">
+        <label for="username" class="form-label">Correo electrónico</label>
+        <input type="text" name="email" id="username" class="form-control" placeholder="Correo electrónico" required value="{{ old('email') }}" />
+        @error('email')
+            <div class="text-danger mt-1">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="mb-3 text-start">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required />
+        @error('password')
+            <div class="text-danger mt-1">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-check mb-3 text-start">
+        <input type="checkbox" class="form-check-input" id="remember" name="remember" />
+        <label class="form-check-label" for="remember">Recuérdame</label>
+    </div>
             <button type="submit" class="btn btn-primary w-100 mb-3">Iniciar sesión</button>
             <a href="#" class="d-block text-light mb-3">¿Se te ha olvidado la contraseña?</a>
         </form>

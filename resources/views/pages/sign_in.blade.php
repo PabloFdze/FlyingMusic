@@ -103,24 +103,47 @@
         <h1 class="text-pink">FlyingMusic</h1>
         <h2>Regístrate para empezar a escuchar contenido</h2>
 
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
         <form method="POST" action="{{ route('flyingmusic.register') }}">
             @csrf
-            <div class="mb-3 text-start">
-                <label for="name" class="form-label">Nombre de usuario</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Nombre de usuario" required>
-            </div>
-            <div class="mb-3 text-start">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="nombre@dominio.com" required>
-            </div>
-            <div class="mb-3 text-start">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
-            </div>
-            <div class="mb-4 text-start">
-                <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Repite la contraseña" required>
-            </div>
+          <div class="mb-3 text-start">
+    <label for="name" class="form-label">Nombre de usuario</label>
+    <input type="text" name="name" id="name" class="form-control" placeholder="Nombre de usuario" required value="{{ old('name') }}">
+    @error('name')
+        <div class="text-danger mt-1">{{ $message }}</div>
+    @enderror
+    </div>
+
+<div class="mb-3 text-start">
+    <label for="email" class="form-label">Correo electrónico</label>
+    <input type="email" name="email" id="email" class="form-control" placeholder="nombre@dominio.com" required value="{{ old('email') }}">
+    @error('email')
+        <div class="text-danger mt-1">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3 text-start">
+    <label for="password" class="form-label">Contraseña</label>
+    <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
+    @error('password')
+        <div class="text-danger mt-1">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-4 text-start">
+    <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Repite la contraseña" required>
+    {{-- No suele haber errores aquí directamente, se valida en 'password' --}}
+</div>
 
             <button type="submit" class="btn btn-primary mb-3">Registrarme</button>
         </form>
