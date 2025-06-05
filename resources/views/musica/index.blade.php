@@ -183,7 +183,7 @@
                         <div class="card playlist-card h-100 shadow-sm">
                             <div class="card-body d-flex flex-column justify-content-center">
                                 <h5 class="playlist-title">{{ $playlist->nombre }}</h5>
-                                <small class="text-muted">
+                                <small class="text-white">
                                     @if ($playlist->user)
                                         Creador: {{ $playlist->user->name }}
                                     @endif
