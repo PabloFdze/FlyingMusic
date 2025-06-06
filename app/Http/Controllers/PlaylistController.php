@@ -15,6 +15,12 @@ class PlaylistController extends Controller
         return view('playlists.show', compact('playlist'));
     }
 
+    public function showFree($id)
+    {
+        $playlist = Playlist::with('musics')->findOrFail($id);
+        return view('playlists.showfree', compact('playlist'));
+    }
+
     // Crear nueva playlist (formulario)
     public function create()
     {

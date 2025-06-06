@@ -240,7 +240,8 @@
 </div>
 
 <!-- Sección Playlists -->
-        <h2 class="mt-5 mb-4 text-white">🎶 Playlists</h2>
+<div class="container mt-5 text-center">
+        <h2 class="text-center mt-5 mb-4 text-white">🎶 Playlists</h2>
         <a href="{{ route('playlists.create') }}" class="btn custom-btn mb-4">Crear nueva Playlist</a>
 
         <div class="row">
@@ -263,6 +264,7 @@
                 <p class="text-white">No hay playlists disponibles.</p>
             @endforelse
         </div>
+</div>
 
 
     <script src="{{ asset('js/confirm.js') }}"></script>

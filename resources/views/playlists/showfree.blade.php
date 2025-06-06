@@ -112,7 +112,7 @@
         </div>
     @endif
 
-    <a href="{{ route('premium.page') }}" class="btn btn-outline-light mt-3">Volver a tu musica</a>
+    <a href="{{ route('flyingmusic.music') }}" class="btn btn-outline-light mt-3">Volver a tu musica</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

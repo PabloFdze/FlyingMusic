@@ -181,7 +181,7 @@
         <div class="row">
             @forelse ($playlists as $playlist)
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="{{ route('playlists.show', $playlist->id) }}" class="playlist-link">
+                    <a href="{{ route('playlists.showfree', $playlist->id) }}" class="playlist-link">
                         <div class="card playlist-card h-100 shadow-sm">
                             <div class="card-body d-flex flex-column justify-content-center">
                                 <h5 class="playlist-title">{{ $playlist->nombre }}</h5>

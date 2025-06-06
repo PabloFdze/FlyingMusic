@@ -41,6 +41,7 @@ Route::post('/logout', [PagesController::class, 'logout'])->name('flyingmusic.lo
 Route::get('/playlists/create', [PlaylistController::class, 'create'])->name('playlists.create');
 Route::post('/playlists', [PlaylistController::class, 'store'])->name('playlists.store');
 Route::get('/playlists/{id}', [PlaylistController::class, 'show'])->name('playlists.show');
+Route::get('/playlistsfree/{id}', [PlaylistController::class, 'showFree'])->name('playlists.showfree');
 Route::post('/playlists/add-song', [PlaylistController::class, 'addSong'])->name('playlists.addSong');
 Route::delete('/playlists/{id}', [PlaylistController::class, 'destroy'])->name('playlists.destroy');
 
