@@ -16,6 +16,8 @@ class Music extends Model
         'file_path',
     ];
 
+    // Relación uno a muchos con la tabla playlists
+
       public function playlists()
     {
         return $this->belongsToMany(Playlist::class, 'playlist_music');

@@ -78,9 +78,7 @@ class PagesController extends Controller
     return redirect()->back()->withErrors(['email' => 'Credenciales incorrectas.']);
 }
     
-
-       
-
+     
 
     public function logout(Request $request)
     {

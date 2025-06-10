@@ -115,13 +115,13 @@
 
         <form method="POST" action="{{ route('flyingmusic.register') }}">
             @csrf
-          <div class="mb-3 text-start">
-    <label for="name" class="form-label">Nombre de usuario</label>
-    <input type="text" name="name" id="name" class="form-control" placeholder="Nombre de usuario" required value="{{ old('name') }}">
-    @error('name')
-        <div class="text-danger mt-1">{{ $message }}</div>
-    @enderror
-    </div>
+            <div class="mb-3 text-start">
+            <label for="name" class="form-label">Nombre de usuario</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Nombre de usuario" required value="{{ old('name') }}">
+                @error('name')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
+            </div>
 
 <div class="mb-3 text-start">
     <label for="email" class="form-label">Correo electrónico</label>

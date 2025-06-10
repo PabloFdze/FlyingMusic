@@ -26,6 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'artist_verified',
     ];
 
+    //Relación uno a muchos con la tabla playlists
+
      public function playlists()
     {
         return $this->hasMany(Playlist::class);

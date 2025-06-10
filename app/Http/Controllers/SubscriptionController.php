@@ -14,6 +14,7 @@ class SubscriptionController extends Controller
 {
     public function premiumPage(Request $request)
     {
+        // Código para buscar la música por título o artista en la barrade de búsqueda
         $query = $request->input('search');
 
         $songs = Music::when($query, function ($q) use ($query) {
@@ -21,6 +22,7 @@ class SubscriptionController extends Controller
           ->orWhere('artist', 'like', "%{$query}%");
         })->get();
 
+        // Enseña las playlists premium
         $playlists = Playlist::where('tipo', 'premium')->get();
 
         return view(('premium.premium'), compact('songs', 'playlists'));
